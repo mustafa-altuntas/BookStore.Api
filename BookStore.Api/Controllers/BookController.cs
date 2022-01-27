@@ -1,23 +1,19 @@
 ﻿using AutoMapper;
-using BookStore.Api.BookOperations.CreateBook;
-using BookStore.Api.BookOperations.DeleteBook;
-using BookStore.Api.BookOperations.GetBookDetail;
-using BookStore.Api.BookOperations.GetBooks;
-using BookStore.Api.BookOperations.UpdateBook;
+using BookStore.Api.Aplication.BookOperations.Commands.CreateBook;
+using BookStore.Api.Aplication.BookOperations.Commands.DeleteBook;
+using BookStore.Api.Aplication.BookOperations.Commands.UpdateBook;
+using BookStore.Api.Aplication.BookOperations.Queries.GetBookDetail;
+using BookStore.Api.Aplication.BookOperations.Queries.GetBooks;
 using BookStore.Api.DbOperations;
 using FluentValidation;
-using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using static BookStore.Api.BookOperations.CreateBook.CreateBookCommand;
-using static BookStore.Api.BookOperations.UpdateBook.UpdateBookCommand;
+using static BookStore.Api.Aplication.BookOperations.Commands.CreateBook.CreateBookCommand;
+using static BookStore.Api.Aplication.BookOperations.Commands.UpdateBook.UpdateBookCommand;
 
 namespace BookStore.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class BookController : Controller
     {
 

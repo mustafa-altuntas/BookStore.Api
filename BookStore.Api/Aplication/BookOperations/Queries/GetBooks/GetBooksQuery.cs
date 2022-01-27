@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using BookStore.Api.Common;
 using BookStore.Api.DbOperations;
-using System;
+using BookStore.Api.Entities;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BookStore.Api.BookOperations.GetBooks
+namespace BookStore.Api.Aplication.BookOperations.Queries.GetBooks
 {
     public class GetBooksQuery
     {
@@ -20,20 +20,8 @@ namespace BookStore.Api.BookOperations.GetBooks
 
         public List<BooksViewModel> Handle()
         {
-            var books = _dbContext.Books.OrderBy(x => x.Id).ToList<Book>();
+            var books = _dbContext.Books.Include(x=> x.Genre).OrderBy(x => x.Id).ToList<Book>();
             List< BooksViewModel> vm = _mapper.Map<List<BooksViewModel>>(books);
-            //List< BooksViewModel> vm = new List<BooksViewModel>();
-            //foreach (var book in books)
-            //{
-            //    vm.Add(new BooksViewModel()
-            //    {
-            //        Title = book.Title,
-            //        Genre = ((GenreEnum)book.GenreId).ToString(),
-            //        PublishDate = book.PublishDate.Date.ToString("dd/MM/yyyy"),
-            //        PageCount = book.PageCount
-            //    });
-
-            //}
             return vm;
         }
 
